@@ -20,6 +20,19 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+class Photo(models.Model):
+    image = models.ImageField()
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=25)
+    images = models.ForeignKey(Photo)
+
+    def __str__(self):
+        return self.title
+
+
+
 
 
 
